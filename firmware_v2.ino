@@ -1,4 +1,4 @@
-#include <WiFi.h>
+#include <Arduino.h>
 
 const int PINO_R = 14;
 const int PINO_G = 27;
@@ -15,8 +15,7 @@ int soma = 0;
 
 bool estadoAlerta = false;
 
-const char* ssid = "Wokwi-GUEST";
-const char* password = "";
+
 
 void ledAzul() {
   analogWrite(PINO_R, 255);
@@ -161,21 +160,6 @@ void setup() {
   ledVerde();
 
   randomSeed(analogRead(0));
-
-  Serial.print("A ligar à rede Wi-Fi: ");
-  Serial.println(ssid);
-
-  WiFi.begin(ssid, password);
-
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-
-  Serial.println("");
-  Serial.println("Ligação Wi-Fi estabelecida com sucesso!");
-  Serial.print("Endereço IP atribuído: ");
-  Serial.println(WiFi.localIP());
 
   Serial.println("====================================");
   Serial.println("MONITORAMENTO DE VEGETACAO - FW 2.0");
